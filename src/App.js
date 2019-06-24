@@ -1,14 +1,26 @@
 import React from 'react';
+import { Route, Switch, Link } from 'react-router-dom';
+
 import './App.css';
 
-function App() {
+import Home from './pages/Home';
+import Rooms from './pages/Rooms';
+import SingleRoom from './pages/SingleRoom';
+import Error from './pages/Error';
+import Navbar from './components/Navbar';
+
+const App = () => {
     return (
-        <div className="App">
-            <header className="App-header">
-                <h1>hello NAIJA</h1>
-            </header>
-        </div>
+        <>
+            <Navbar />
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/rooms" component={Rooms} />
+                <Route exact path="/single-room/:slug" component={SingleRoom} />
+                <Route component={Error} />
+            </Switch>
+        </>
     );
-}
+};
 
 export default App;
